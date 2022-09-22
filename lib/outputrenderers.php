@@ -1025,7 +1025,7 @@ class core_renderer extends renderer_base {
 
         // If the theme implements course index and the current course format uses course index and the current
         // page layout is not 'frametop' (this layout does not support course index), show no links.
-        if ($this->page->theme->usescourseindex && $courseformat->uses_course_index() &&
+        if (false && $this->page->theme->usescourseindex && $courseformat->uses_course_index() &&
                 $this->page->pagelayout !== 'frametop') {
             return '';
         }
