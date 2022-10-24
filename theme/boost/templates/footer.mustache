@@ -75,7 +75,6 @@
             </div>
 
             {{{ output.standard_footer_html }}}
-            {{{ output.standard_end_of_body_html }}}
         </div>
         <div class="footer-section p-3">
             <div>{{#str}}poweredbymoodle, core{{/str}}</div>
@@ -93,6 +92,7 @@
         </div>
     </div>
 </footer>
+{{{ output.standard_end_of_body_html }}}
 {{#js}}
 require(['theme_boost/footer-popover'], function(FooterPopover) {
     FooterPopover.init();
