@@ -68,13 +68,13 @@ class manager {
             }
         }
 
-        // Plugins.
-        $pluginswithfunction = get_plugins_with_function('myprofile_navigation', 'lib.php');
-        foreach ($pluginswithfunction as $plugins) {
-            foreach ($plugins as $function) {
-                $function($tree, $user, $iscurrentuser, $course);
-            }
-        }
+        // // Plugins.
+        // $pluginswithfunction = get_plugins_with_function('myprofile_navigation', 'lib.php');
+        // foreach ($pluginswithfunction as $plugins) {
+        //     foreach ($plugins as $function) {
+        //         $function($tree, $user, $iscurrentuser, $course);
+        //     }
+        // }
 
         $tree->sort_categories();
         return $tree;
