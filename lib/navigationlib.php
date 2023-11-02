@@ -5275,7 +5275,7 @@ class settings_navigation extends navigation_node {
         $useraccount = $usersetting->add(get_string('useraccount'), null, self::TYPE_CONTAINER, null, 'useraccount');
 
         // Add the profile edit link.
-        if (isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
+        if (false && isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
             if (($currentuser || is_siteadmin($USER) || !is_siteadmin($user)) &&
                     has_capability('moodle/user:update', $systemcontext)) {
                 $url = new moodle_url('/user/editadvanced.php', array('id'=>$user->id, 'course'=>$course->id));
@@ -5304,7 +5304,7 @@ class settings_navigation extends navigation_node {
 
         // Default homepage.
         $defaulthomepageuser = (!empty($CFG->defaulthomepage) && ($CFG->defaulthomepage == HOMEPAGE_USER));
-        if (isloggedin() && !isguestuser($user) && $defaulthomepageuser) {
+        if (false && isloggedin() && !isguestuser($user) && $defaulthomepageuser) {
             if ($currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                     has_capability('moodle/user:editprofile', $usercontext)) {
                 $url = new moodle_url('/user/defaulthomepage.php', ['id' => $user->id]);
@@ -5312,7 +5312,7 @@ class settings_navigation extends navigation_node {
             }
         }
 
-        if (isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
+        if (false && isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
             if ($currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                     has_capability('moodle/user:editprofile', $usercontext)) {
                 $url = new moodle_url('/user/language.php', array('id' => $user->id, 'course' => $course->id));
@@ -5321,7 +5321,7 @@ class settings_navigation extends navigation_node {
         }
         $pluginmanager = core_plugin_manager::instance();
         $enabled = $pluginmanager->get_enabled_plugins('mod');
-        if (isset($enabled['forum']) && isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
+        if (false && isset($enabled['forum']) && isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
             if ($currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                     has_capability('moodle/user:editprofile', $usercontext)) {
                 $url = new moodle_url('/user/forum.php', array('id' => $user->id, 'course' => $course->id));
@@ -5329,7 +5329,7 @@ class settings_navigation extends navigation_node {
             }
         }
         $editors = editors_get_enabled();
-        if (count($editors) > 1) {
+        if (false && count($editors) > 1) {
             if (isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
                 if ($currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                         has_capability('moodle/user:editprofile', $usercontext)) {
@@ -5340,7 +5340,7 @@ class settings_navigation extends navigation_node {
         }
 
         // Add "Calendar preferences" link.
-        if (isloggedin() && !isguestuser($user)) {
+        if (false && isloggedin() && !isguestuser($user)) {
             if ($currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                     has_capability('moodle/user:editprofile', $usercontext)) {
                 $url = new moodle_url('/user/calendar.php', array('id' => $user->id));
@@ -5349,7 +5349,7 @@ class settings_navigation extends navigation_node {
         }
 
         // Add "Content bank preferences" link.
-        if (isloggedin() && !isguestuser($user)) {
+        if (false && isloggedin() && !isguestuser($user)) {
             if ($currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                 has_capability('moodle/user:editprofile', $usercontext)) {
                 $url = new moodle_url('/user/contentbank.php', ['id' => $user->id]);
@@ -5430,7 +5430,7 @@ class settings_navigation extends navigation_node {
         }
 
         // Messaging.
-        if (($currentuser && has_capability('moodle/user:editownmessageprofile', $systemcontext)) || (!isguestuser($user) &&
+        if (false && ($currentuser && has_capability('moodle/user:editownmessageprofile', $systemcontext)) || (!isguestuser($user) &&
                 has_capability('moodle/user:editmessageprofile', $usercontext) && !is_primary_admin($user->id))) {
             $messagingurl = new moodle_url('/message/edit.php', array('id' => $user->id));
             $notificationsurl = new moodle_url('/message/notificationpreferences.php', array('userid' => $user->id));
