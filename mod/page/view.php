@@ -59,6 +59,11 @@ $PAGE->set_url('/mod/page/view.php', array('id' => $cm->id));
 $options = empty($page->displayoptions) ? [] : (array) unserialize_array($page->displayoptions);
 
 $activityheader = ['hidecompletion' => false];
+
+if (empty($options['printintro'])) {
+    $activityheader['title'] = '';
+}
+
 if (empty($options['printintro'])) {
     $activityheader['description'] = '';
 }
