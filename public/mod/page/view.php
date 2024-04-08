@@ -61,6 +61,7 @@ $printintro = !empty($options['printintro']);
 
 $activityheader = ['hidecompletion' => false];
 if (!$printintro) {
+    $activityheader['title'] = '';
     $activityheader['description'] = '';
 }
 
