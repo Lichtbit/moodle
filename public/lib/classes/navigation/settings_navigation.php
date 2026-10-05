@@ -1162,7 +1162,7 @@ class settings_navigation extends navigation_node {
         $useraccount = $usersetting->add(get_string('useraccount'), null, self::TYPE_CONTAINER, null, 'useraccount');
 
         // Add the profile edit link.
-        if (isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
+        if (false && isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
             if (
                 ($currentuser || is_siteadmin($USER) || !is_siteadmin($user)) &&
                     has_capability('moodle/user:update', $systemcontext)
@@ -1197,7 +1197,7 @@ class settings_navigation extends navigation_node {
 
         // Default homepage.
         $defaulthomepageuser = (!empty($CFG->defaulthomepage) && ($CFG->defaulthomepage == HOMEPAGE_USER));
-        if (isloggedin() && !isguestuser($user) && $defaulthomepageuser) {
+        if (false && isloggedin() && !isguestuser($user) && $defaulthomepageuser) {
             require_once($CFG->dirroot . '/user/lib.php');
             $options = \core\user::get_default_homepage_options();
             if (
@@ -1210,7 +1210,7 @@ class settings_navigation extends navigation_node {
             }
         }
 
-        if (isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
+        if (false && isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
             if (
                 $currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                     has_capability('moodle/user:editprofile', $usercontext)
@@ -1221,7 +1221,7 @@ class settings_navigation extends navigation_node {
         }
         $pluginmanager = core_plugin_manager::instance();
         $enabled = $pluginmanager->get_enabled_plugins('mod');
-        if (isset($enabled['forum']) && isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
+        if (false && isset($enabled['forum']) && isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
             if (
                 $currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                     has_capability('moodle/user:editprofile', $usercontext)
@@ -1231,7 +1231,7 @@ class settings_navigation extends navigation_node {
             }
         }
         $editors = editors_get_enabled();
-        if (count($editors) > 1) {
+        if (false && count($editors) > 1) {
             if (isloggedin() && !isguestuser($user) && !is_mnet_remote_user($user)) {
                 if (
                     $currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
@@ -1244,7 +1244,7 @@ class settings_navigation extends navigation_node {
         }
 
         // Add "Calendar preferences" link.
-        if (isloggedin() && !isguestuser($user)) {
+        if (false && isloggedin() && !isguestuser($user)) {
             if (
                 $currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                     has_capability('moodle/user:editprofile', $usercontext)
@@ -1261,7 +1261,7 @@ class settings_navigation extends navigation_node {
         }
 
         // Add "Content bank preferences" link.
-        if (isloggedin() && !isguestuser($user)) {
+        if (false && isloggedin() && !isguestuser($user)) {
             if (
                 $currentuser && has_capability('moodle/user:editownprofile', $systemcontext) ||
                 has_capability('moodle/user:editprofile', $usercontext)
@@ -1366,7 +1366,7 @@ class settings_navigation extends navigation_node {
         }
 
         // Personal access tokens. Own tokens only, so there is nothing to show on another user.
-        if ($currentuser && has_capability('moodle/api:createtoken', $systemcontext)) {
+        if (false && $currentuser && has_capability('moodle/api:createtoken', $systemcontext)) {
             $useraccount->add(
                 get_string('personalaccesstokens'),
                 new url('/user/personalaccesstokens.php'),
@@ -1376,8 +1376,10 @@ class settings_navigation extends navigation_node {
 
         // Messaging.
         if (
-            ($currentuser && has_capability('moodle/user:editownmessageprofile', $systemcontext)) || (!isguestuser($user) &&
-                has_capability('moodle/user:editmessageprofile', $usercontext) && !is_primary_admin($user->id))
+            false && (
+                ($currentuser && has_capability('moodle/user:editownmessageprofile', $systemcontext)) || (!isguestuser($user) &&
+                    has_capability('moodle/user:editmessageprofile', $usercontext) && !is_primary_admin($user->id))
+            )
         ) {
             $messagingurl = new url('/message/edit.php', ['id' => $user->id]);
             $notificationsurl = new url('/message/notificationpreferences.php', ['userid' => $user->id]);
